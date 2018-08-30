@@ -6,8 +6,11 @@
       </div> -->
       <div class="cover"></div>
         <div class='video girl'  @click="broadcast">
+          <div class='status'>BACK</div>
         </div>
-        <div class='video mum'></div>
+        <div class='video mum'>
+          <div class='status'>FRONT</div>
+        </div>
         <div class='controls'>
           <!-- <div class="button" @click="goLive" v-if="!broadcasting">BROADCAST</div> -->
           <!-- <div class="button live" @click="goLive" v-else>LIVE</div> -->
@@ -76,6 +79,24 @@ export default {
   text-align: center;
   padding-top: 20px;
 }
+.status {
+  background: #000;
+  color: #fff;
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 4px;
+  padding: 5px 15px;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(#000, 0.5);
+  transition: all 0.5s ease-in-out;
+  // transform: translate3d(0, 0, 0) scale(0);
+}
+.mum .status {
+  right: auto;
+  left: 20px;
+}
 .video {
   position: absolute;
   width: 100%;
@@ -86,14 +107,14 @@ export default {
   border-radius: 4px;
   transition: all 0.5s ease-in-out;
   background-size: 100%;
+  box-shadow: 0 40px 40px rgba(#000, 0.3);
   &.girl {
     background-image: url('./assets/video.png');
-    transform: translate3d(-120%, 0, 0) scale(0.2);
+    transform: translate3d(-120%, -50%, 0) scale(0.2);
   }
   &.mum {
     background-image: url('./assets/girl.png');
-    transform: translate3d(120%, 0, 0) scale(0.2);
-    box-shadow: 0 0 20px rgba(#000, 0.8);
+    transform: translate3d(120%, 50%, 0) scale(0.2);
   }
 }
 .cover {
@@ -102,19 +123,20 @@ export default {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(pink, 1);
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 #app.active {
   .girl {
-    transform: translate3d(-35%, -10%, 0) scale(0.6);
+    transform: translate3d(-31%, -12%, 0) scale(0.6);
   }
   .mum {
-    transform: translate3d(30%, -10%, 0) scale(0.6);
+    transform: translate3d(31%, -12%, 0) scale(0.6);
   }
   .controls {
-    transform: translate3d(0, 0, 0) scale(0.8);
+    transition-delay: 0.2s;
+    transform: translate3d(0, 0, 0) scale(1);
   }
   .cover {
     opacity: 1;
@@ -125,14 +147,14 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 250px;
+  height: 178px;
   width: 100%;
   z-index: 10;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-size: 100%;
   background-image: url('./assets/ui.png');
   background-repeat: no-repeat;
-  transform: translate3d(0, 100%, 0) scale(0.8);
+  transform: translate3d(0, 100%, 0) scale(1);
   .button {
     width: 200px;
     height: 60px;
